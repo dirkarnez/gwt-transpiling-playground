@@ -23,8 +23,10 @@ jobs:
       - name: download GWT
         shell: cmd
         run: |
-          curl https://github.com/gwtproject/gwt/releases/download/2.12.1/gwt-2.12.1.zip -L -O &&^
-          7z.exe x gwt-2.12.1.zip -o"%USERPROFILE%\Downloads\gwt-2.12.1"
+          curl https://github.com/gwtproject/gwt/releases/download/2.12.1/gwt-2.12.1.zip -L --output gwt-2.12.1.zip &&^
+          7z.exe x gwt-2.12.1.zip -o"%USERPROFILE%\Downloads\gwt-2.12.1" &&^
+          cd /d "%USERPROFILE%\Downloads\gwt-2.12.1" &&^
+          dir
 
       - uses: actions/setup-java@v4
         with:
