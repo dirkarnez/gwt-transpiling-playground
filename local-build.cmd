@@ -1,7 +1,8 @@
 @echo off
 set PATH=^
 %USERPROFILE%\Downloads\OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7\jdk-21.0.6+7\bin;^
-%USERPROFILE%\Downloads\gwt-2.12.1;
+%USERPROFILE%\Downloads\gwt-2.12.1;^
+C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.6-7.0\x64;
 
 @REM webAppCreator.cmd
 @REM @REM  
