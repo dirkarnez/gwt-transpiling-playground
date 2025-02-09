@@ -4,6 +4,9 @@ gwt-transpiling-playground
 - https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.6%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7.zip
 - https://github.com/gwtproject/gwt/releases/download/2.12.1/gwt-2.12.1.zip
 
+### Notes
+- [`./public/index.html`](./public/index.html) will be automatically copied to `war/mymodule` by the GWT compiler
+
 ### GWT Compiler Options
 - [[GWT] Documentation - Compile & Debug](https://www.gwtproject.org/doc/latest/DevGuideCompilingAndDebugging.html#DevGuideCompilerOptions)
 
