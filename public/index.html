@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script language="javascript" src="../war/mymodule/mymodule.nocache.js"></script>
+    <script>
+        // call client.* after MyEntryPoint::onModuleLoad
+        // this means MyEntryPoint should dispatch event
+        // user/src/com/google/gwt/event/dom/client/DomEvent.java
+        console.log(new client.MathLogic().add(1, 100));
+    </script>
+</body>
+</html>

@@ -9,19 +9,28 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import client.MathLogic;
+import client.CounterEvent;
 
+// com.google.gwt.event.shared.EventBus
 public class MyEntryPoint implements EntryPoint {
-  public void onModuleLoad() {
-    Button b = new Button("Click me", new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        MathLogic logic = new MathLogic();
-        int result = logic.add(5, 11);
-        Window.alert("Hello, AJAX " + result);
-      }
-    });
+  private int count = 123;
 
-    RootPanel.get().add(b);
+  private EventBus eventBus = new SimpleEventBus();
+
+  public void onModuleLoad() {
+    // Button b = new Button("Click me", new ClickHandler() {
+    //   public void onClick(ClickEvent event) {
+    //     MathLogic logic = new MathLogic();
+    //     int result = logic.add(5, 11);
+    //     Window.alert("Hello, AJAX " + result);
+    //   }
+    // });
+
+    // RootPanel.get().add(b);
+    eventBus.fireEvent(new CounterEvent(count));
   }
 }
 

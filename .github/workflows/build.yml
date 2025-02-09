@@ -1,0 +1,46 @@
+name: gwt-prebuilt-release-actions-workflow
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - '*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+permissions:
+    contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: download JDK
+        shell: cmd
+        run: |
+          curl https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.6%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7.zip -L -O &&^
+          7z.exe x OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7.zip -o"%USERPROFILE%\Downloads\OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7"
+
+      - name: download GWT
+        shell: cmd
+        run: |
+          curl https://github.com/gwtproject/gwt/releases/download/2.12.1/gwt-2.12.1.zip -L -O &&^
+          7z.exe x gwt-2.12.1.zip -o"%USERPROFILE%\Downloads\gwt-2.12.1"
+
+      - name: set PATH, build
+        shell: cmd
+        run: |
+          ./local-build.cmd
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          directory: 'war/mymodule'
+          filename: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
+          
+      - name: Release prebuilt
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "war/mymodule/${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
