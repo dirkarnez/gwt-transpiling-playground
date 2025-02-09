@@ -19,10 +19,6 @@ jobs:
       #   run: |
       #     curl https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.6%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7.zip -L -O -J &&^
       #     7z.exe x OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7.zip -o"%USERPROFILE%\Downloads\OpenJDK21U-jdk_x64_windows_hotspot_21.0.6_7"
-
-      - shell: cmd
-        run: |
-          C:\Windows\System32\where.exe /R C:\ java.exe
           
       - name: download GWT
         shell: cmd
@@ -34,6 +30,10 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
+
+      - shell: cmd
+        run: |
+          C:\Windows\System32\where.exe /R C:\ java.exe
 
       - name: set PATH, build
         shell: cmd
