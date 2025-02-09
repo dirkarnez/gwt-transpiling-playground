@@ -31,9 +31,9 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
 
-      - shell: cmd
-        run: |
-          C:\Windows\System32\where.exe /R C:\ java.exe
+      # - shell: cmd
+      #   run: |
+      #     C:\Windows\System32\where.exe /R C:\ java.exe
 
       - name: set PATH, build
         shell: cmd
