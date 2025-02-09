@@ -6,6 +6,8 @@ gwt-transpiling-playground
 
 ### Notes
 - [`./public/index.html`](./public/index.html) will be automatically copied to `war/mymodule` by the GWT compiler
+- The exported Java classes takes time to load
+    - ![](./images/demo.jpg)
 
 ### GWT Compiler Options
 - [[GWT] Documentation - Compile & Debug](https://www.gwtproject.org/doc/latest/DevGuideCompilingAndDebugging.html#DevGuideCompilerOptions)
